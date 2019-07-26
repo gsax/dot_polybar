@@ -50,20 +50,20 @@ offset-x = 15
 offset-y = 10
 
 background = ${colors.bg}
-foreground = ${colors.green}
+foreground = ${colors.fg}
 
 border-size = 1
-border-color = ${colors.fg}
+border-color = ${colors.blue}
 
 padding = 2
 module-margin = 10
 
-font-0 = Iosevka Nerd Font Mono:style=Medium,Regular:pixelsize=12:antialias=true;3
-font-1 = Noto:size=12;3
+font-0 = Noto:size=12;3
+font-1 = Noto Sans Tibetan:style=Bold:size=12;5
 
-modules-left = bspwm
-modules-center = 
-modules-right = date
+modules-left =
+modules-center = bspwm
+modules-right =
 
 tray-position = center
 tray-padding = 1
@@ -123,26 +123,9 @@ fuzzy-match = true
 
 label-occupied = %icon% %name%
 
-label-focused-padding = 2
-label-focused-margin = 0.5
 label-focused-foreground = ${colors.brightgreen}
-label-focused-background = ${colors.black}
 label-focused-underline = ${colors.red}
 
-label-unfocused-padding = 2
-label-unfocused-margin = 0.5
-label-visible-padding = 2
-label-visible-margin = 0.5
-
-label-empty-foreground = ${colors.brightblack}
-
-[module/date]
-type = internal/date
-interval = 1
-
-date = %Y-%m-%d  KW %V
-time = %H:%M
-
-label = %date% | %time%
+label-empty-foreground = ${colors.blue}
 
 ; vim:ft=dosini
