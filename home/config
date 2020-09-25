@@ -1,9 +1,3 @@
-;**********************************************************
-;
-;                  COLORS
-;
-;**********************************************************
-
 [colors]
 ; Base colors from .Xresources
 bg            =   ${xrdb:background}
@@ -27,105 +21,132 @@ brightmagenta =   ${xrdb:color13}
 brightcyan    =   ${xrdb:color14}
 brightwhite   =   ${xrdb:color15}
 
-;**********************************************************
-;
-;           GLOBAL WM SETTINGS
-;
-;**********************************************************
-
 [global/wm]
 margin-top = 0
 margin-bottom = 0
 
-;*********************************************************
-;
-;           BAR SETTINGS
-;
-;********************************************************
-
 [bar/top]
 wm-restack = bspwm
-height = 15
-offset-x = 15
-offset-y = 10
+height = 14
+offset-x = 0
+offset-y = 0
 
 background = ${colors.bg}
 foreground = ${colors.fg}
 
-border-size = 1
-border-color = ${colors.blue}
-
 padding = 2
-module-margin = 10
+module-margin = 1
 
-font-0 = Noto:size=12;3
+font-0 = Noto:size=12;4
 font-1 = Noto Sans Tibetan:style=Bold:size=12;5
+font-2 = NotoSans Nerd Font Mono:size=10;2
 
-modules-left =
-modules-center = bspwm
-modules-right =
+modules-left = bspwm
+modules-center =
+modules-right = acpitz-acpi-0 wlan eth battery
 
-tray-position = center
-tray-padding = 1
+tray-position = none
 
-[bar/DP-1]
+[bar/LVDS1]
 inherit = bar/top
-monitor = DP-1
-width = 1650
-
-[bar/DVI-I-1]
-inherit = bar/top
-monitor = DVI-I-1
-width = 1250
-
-[bar/DVI-D-1]
-inherit = bar/top
-monitor = DVI-D-1
-width = 1250
-
-;**********************************************************
-;
-;                   MODULES SETTINGS
-;
-;**********************************************************
+monitor = LVDS1
+width = 1366
 
 [module/bspwm]
 type = internal/bspwm
 
-; Only show workspaces defined on the same output as the bar
-; NOTE: The bspwm and XRandR monitor names must match, which they do by default.
-; Default: true
 pin-workspaces = true
-
-; Output mode flags after focused state label
-; Default: false
 inline-mode = false
-
-; Create click handler used to focus workspace
-; Default: true
 enable-click = true
-
-; Create scroll handlers used to cycle workspaces
-; Default: true
 enable-scroll = false
 
-; Set the scroll cycle direction
-; Default: true
-reverse-scroll = false
-
-; Use fuzzy (partial) matching on labels when assigning
-; icons to workspaces
-; Example: code;♚ will apply the icon to all workspaces
-; containing 'code' in the
-; label
-; Default: false
-fuzzy-match = true
-
-label-occupied = %icon% %name%
-
 label-focused-foreground = ${colors.brightgreen}
-label-focused-underline = ${colors.red}
+label-occupied-foreground = ${colors.blue}
+label-empty-foreground = ${colors.brightblack}
 
-label-empty-foreground = ${colors.blue}
+[module/package-id-0]
+type = internal/temperature
+interval = 0.5
+hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon4/temp1_input
+
+format = <label>
+label = %temperature-c%
+label-foreground = ${colors.green}
+units = true
+
+[module/acpitz-acpi-0]
+type = internal/temperature
+interval = 0.5
+hwmon-path = /sys/devices/virtual/thermal/thermal_zone0/hwmon0/temp1_input
+
+format = <label>
+label = %temperature-c%
+label-foreground = ${colors.green}
+units = true
+
+[module/wlan]
+type = internal/network
+interface = wlp3s0
+interval = 3.0
+
+format-connected = <ramp-signal>
+ramp-signal-0 = 直
+ramp-signal-0-foreground = ${colors.red}
+ramp-signal-1 = 直
+ramp-signal-1-foreground = ${colors.brightred}
+ramp-signal-2 = 直
+ramp-signal-2-foreground = ${colors.magenta}
+ramp-signal-3 = 直
+ramp-signal-3-foreground = ${colors.yellow}
+ramp-signal-4 = 直
+ramp-signal-4-foreground = ${colors.green}
+ramp-signal-5 = 直
+ramp-signal-5-foreground = ${colors.brightgreen}
+
+format-disconnected = <label-disconnected>
+label-disconnected = 睊
+label-disconnected-foreground = ${colors.brightblack}
+
+[module/eth]
+type = internal/network
+interface = enp0s25
+interval = 3.0
+
+format-connected = <label-connected>
+label-connected = 
+label-connected-foreground = ${colors.brightgreen}
+
+format-disconnected = <label-disconnected>
+label-disconnected = 
+label-disconnected-foreground = ${colors.brightblack}
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = AC
+full-at = 99
+
+format-full = <label-full>
+label-full =  %percentage%% 
+label-full-foreground = ${colors.brightgreen}
+
+format-charging = <ramp-capacity> <label-charging>
+label-charging = %percentage%% ﮣ
+label-charging-foreground = ${colors.green}
+
+format-discharging = <ramp-capacity> <label-discharging>
+label-discharging = %percentage%% ﮤ
+label-discharging-foreground = ${colors.blue}
+
+ramp-capacity-0 = 
+ramp-capacity-0-foreground = ${colors.brightblack}
+ramp-capacity-1 = 
+ramp-capacity-1-foreground = ${colors.red}
+ramp-capacity-2 = 
+ramp-capacity-2-foreground = ${colors.yellow}
+ramp-capacity-3 = 
+ramp-capacity-3-foreground = ${colors.green}
+ramp-capacity-4 = 
+ramp-capacity-4-foreground = ${colors.brightgreen}
 
 ; vim:ft=dosini

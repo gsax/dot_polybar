@@ -7,9 +7,7 @@ killall -q polybar
 while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
 # Launch bar1 and bar2
-polybar DP-1 &
-polybar DVI-I-1 &
-polybar DVI-D-1 &
+polybar LVDS1 &
 
 
 echo "Bars launched..."
