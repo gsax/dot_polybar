@@ -2,7 +2,7 @@
 ; Base colors from .Xresources
 bg            =   ${xrdb:background}
 fg            =   ${xrdb:foreground}
-              
+
 black         =   ${xrdb:color0}
 red           =   ${xrdb:color1}
 green         =   ${xrdb:color2}
