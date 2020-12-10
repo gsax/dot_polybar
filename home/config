@@ -38,7 +38,7 @@ padding = 2
 module-margin = 1
 
 font-0 = Noto:size=12;4
-font-1 = Noto Sans Tibetan:style=Bold:size=12;5
+font-1 = Noto Serif Tibetan:style=Bold:size=12;5
 font-2 = NotoSans Nerd Font Mono:size=10;2
 
 modules-left = bspwm
